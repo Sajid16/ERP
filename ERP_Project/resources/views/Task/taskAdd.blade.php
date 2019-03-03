@@ -31,7 +31,7 @@ InfobizSoft-ERP
 						</div>
 					</div>
 				</div>
-				{!! Form::open(['url'=>'/employee_management/employee_save','method'=>'post', 'enctype'=>'multipart/form-data']) !!}		
+				{!! Form::open(['url'=>'/task_management/task_save','method'=>'post', 'enctype'=>'multipart/form-data']) !!}		
 				<div class="page-body">
 					<div class="row">
 						<div class="col-sm-6">
@@ -43,7 +43,7 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Department</label>
 										<div class="col-sm-8">
-											<select name="emp_dept_name" class="form-control departmentcategory" id="dept_cat_id">
+											<select name="emp_dept_name" class="form-control departmentcategory" id="dept_cat_id" required="true">
 												<option value="0" disabled="true" selected="true">Select Department</option>
 												@foreach($array['department'] as $dept)
 												<option value="{{$dept->id}}">{{$dept->dept_name}}</option>
@@ -55,7 +55,7 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">First Name</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter Your Name" name="emp_fname" id="field1" required>
+											<input type="text" class="form-control" placeholder="Enter Your First Name" name="emp_fname" id="field1" required>
 											<label><small>*your first name must match your NID name and contains the full length except the last name.</small></label>
 										</div>
 										<div id="fnameList"></div>
@@ -63,7 +63,7 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Last Name</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter Your Name" name="emp_lname" id="field2" required>
+											<input type="text" class="form-control" placeholder="Enter Your Last Name" name="emp_lname" id="field2" required>
 											<label><small>*your last name must match your NID name.</small></label>
 										</div>
 									</div>
@@ -90,19 +90,19 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Issue Date</label>
 										<div class="col-sm-8">
-											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="emp_joining_date" required>
+											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="taskStartDate" required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">End Date</label>
 										<div class="col-sm-8">
-											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="emp_joining_date" required>
+											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="taskEndDate" required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Description</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter Your Joining Salary" name="emp_joining_salary" required>
+											<input type="text" class="form-control" placeholder="Enter task description" name="taskDescription" required>
 										</div>
 									</div>
 								</div>
@@ -126,6 +126,5 @@ InfobizSoft-ERP
 @endsection
 
 @section('page_js')
-
 
 @endsection

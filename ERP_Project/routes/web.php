@@ -70,6 +70,8 @@ Route::get('/employee_management/employee_contracts_delete/{id}', 'employeeContr
 
 Route::get('/task_management/task_list','taskController@index')->name('tasklist');
 Route::get('/task_management/task_add','taskController@add')->name('taskadd');
+Route::post('/task_management/task_save','taskController@save');
+Route::get('/task_management/task_status_edit/{id}','taskController@taskStatusEdit');
 
 // -------------------------------------------------------------------------------------------------
 //  leave management settings url

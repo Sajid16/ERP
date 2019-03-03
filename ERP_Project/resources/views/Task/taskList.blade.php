@@ -33,11 +33,11 @@ InfobizSoft-ERP
 				<table class="table table-hover table-bordered results">
 					<thead>
 						<tr>
-							<th>Employee Email</th>
+							<th>Serial No.</th>
 							<th>Employee Name</th>
-							<th>Task</th>
+							<th>Employee Email</th>
 							<th>Description</th>
-							<th>Deal Date</th>
+							<th>Start Date</th>
 							<th>End Date</th>
 							<th>Status</th>
 							<th>Action</th>
@@ -47,9 +47,29 @@ InfobizSoft-ERP
 						</tr>
 					</thead>
 					<tbody>
+						<?php $i=0 ?>
+						@foreach($array['taskInfo'] as $taskinfo)
 						<tr>
-							
-						</tr>		
+							<td>{{++$i}}</td>
+							<td>{{$taskinfo->emp_fname." ".$taskinfo->emp_lname}}</td>
+							<td>{{$taskinfo->emp_email}}</td>
+							<td>{{$taskinfo->emp_taskDescription}}</td>
+							<td>{{$taskinfo->emp_startDate}}</td>
+							<td>{{$taskinfo->emp_endDate}}</td>
+							@if($taskinfo->status == 1)
+							<td><a href="{{url('/task_management/task_status_edit')}}/{{$taskinfo->id}}" style="font-size: 17px;"><span class="badge badge-primary">On Progress</span></a></td>
+							@elseif($taskinfo->status == 2)
+							<td><a href="{{url('/task_management/task_status_edit')}}/{{$taskinfo->id}}" style="font-size: 17px;"><span class="badge badge-success">Completed</span></a></td>
+							@else
+							<td><a href="{{url('/task_management/task_status_edit')}}/{{$taskinfo->id}}" style="font-size: 17px;"><span class="badge badge-warning">Assigned</span></a></td>
+							@endif
+							<td style="text-align: center;">
+									<a href="#" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+									<a href="#" class="btn btn-danger" role="button" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+								</td>
+						</tr>
+						<input type="hidden" name="taskid" value="{{$taskinfo->id}}">		
+						@endforeach
 					</tbody>
 				</table>
 			</div>
