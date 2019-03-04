@@ -35,7 +35,7 @@ InfobizSoft-ERP
 								<div class="col-sm-8">
 									<select name="email" class="form-control">
 										<option value="0">Select an Email</option>
-										@foreach($previledged__array['email'] as $user_email)
+										@foreach($dashboard_array['test_email'] as $user_email)
 										<option value="{{$user_email->email}}" name="email">{{$user_email->email}}</option>
 										@endforeach
 									</select>
@@ -61,27 +61,7 @@ InfobizSoft-ERP
 									@endforeach
 								</div>
 								
-								<!-- <div class="col-sm-4">
-									@foreach($dashboard_array['sub_menu'] as $submenu)
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="{{$submenu->subMenuId}}" id="defaultCheck1" name="Privilege_sub_menu">
-										<label class="form-check-label" for="defaultCheck1">
-											{{$submenu->subMenuName}}
-										</label><br>
-									</div>
-									@endforeach
-								</div>
-
-								<div class="col-sm-4">
-									@foreach($dashboard_array['sub_menu_list'] as $submenulist)
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="Privilege_sub_menu_list">
-										<label class="form-check-label" for="defaultCheck1">
-											{{$submenulist->subMenuListItems}}
-										</label><br>
-									</div>
-									@endforeach
-								</div> -->
+								
 							</div>
 						</div>
 					</div>

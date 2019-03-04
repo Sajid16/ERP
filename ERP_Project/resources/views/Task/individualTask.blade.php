@@ -18,17 +18,12 @@ InfobizSoft-ERP
 					Task Management
 				</div>
 				<br><br>
-				<div class="form-group pull-left mt-2" style="width:450px"> 
+				<div class="form-group pull-left mt-2" style="width:450px; padding-bottom: 20px;"> 
 					<input type="text" class="search form-control" placeholder="What you looking for?">
 				</div>
 
-				<div class="add_employee" style="text-align: right; padding-bottom: 20px;">
-					<a href="{{Route('taskadd')}}" class="btn btn-primary" role="button" title="Add Employee"><i class="fa fa-plus" aria-hidden="true"></i>Add New Task</a>
-				</div>
-
-				<span class="counter pull-right"></span>
-				<div class="caption" style="padding-top: 15px; padding-bottom: 15px; background-color: 	#202020; font-size: 18px; color:white;">
-					<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px"></i> Task Mangement Table
+				<div class="" id="" style="padding-top: 15px; padding-bottom: 15px; background-color: #202020; font-size: 18px; color:white;margin-top: 60px;">
+					<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px;margin-left:-434px;"></i> Individual Task Mangement Table
 				</div>
 				<table class="table table-hover table-bordered results">
 					<thead>
@@ -68,8 +63,7 @@ InfobizSoft-ERP
 							<td><span class="badge badge-warning" style="font-size: 13px;">Assigned</span></td>
 							@endif
 							<td style="text-align: center;">
-								<a href="{{url('/task_management/task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
-								<a href="#" class="btn btn-danger" role="button" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+								<a href="{{url('/task_management/individual_task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Status</a>
 							</td>
 						</tr>
 						<input type="hidden" name="taskid" value="{{$taskinfo->id}}">		

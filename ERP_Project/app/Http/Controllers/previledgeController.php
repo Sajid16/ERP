@@ -19,6 +19,7 @@ class previledgeController extends Controller
                     ->Where('menuses.action','=',1)
                     ->Where('erp_previledges.user_email','=',$email)
                     ->get();
+        // $main_menu = DB::table('menuses')->select('id','name')->where('menu', '=', 1)->Where('action','=',1)->get();
         $sub_menu =  DB::table('menuses')
                     ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
                     ->select('menuses.*','erp_previledges.*')
@@ -33,19 +34,17 @@ class previledgeController extends Controller
                     ->Where('menuses.action','=',1)
                     ->Where('erp_previledges.user_email','=',$email)
                     ->get();
+        $test_email = DB::table('users')
+                    ->get();
 
-        // for functionalities
-
-        
-        $email = DB::table('users')->get();
         $dashboard_array = [];
-        $previledged__array = [];
+
+        //query;
         $dashboard_array['main_menu'] = $main_menu;
         $dashboard_array['sub_menu'] = $sub_menu;
         $dashboard_array['sub_menu_list'] = $sub_menu_list;
-
-        $previledged__array['email']= $email;
-        return view ('Previledge.superAdminPreviledge',compact('dashboard_array','previledged__array'));
+        $dashboard_array['test_email'] = $test_email;
+        return view ('Previledge.superAdminPreviledge',compact('dashboard_array'));
     }
 
     public function superAdminsave(Request $req){

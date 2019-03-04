@@ -6,7 +6,6 @@ InfobizSoft-ERP
 
 @section('page_style')
 <link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/style.css')}}">
-
 @endsection
 
 @section('dashboard_content')
@@ -32,7 +31,7 @@ InfobizSoft-ERP
 						</div>
 					</div>
 				</div>
-				{!! Form::open(['url'=>'/task_management/task_save','method'=>'post', 'enctype'=>'multipart/form-data']) !!}		
+				{!! Form::open(['url'=>'/task_management/task_update','method'=>'post', 'enctype'=>'multipart/form-data']) !!}		
 				<div class="page-body">
 					<div class="row">
 						<div class="col-sm-6">
@@ -40,14 +39,16 @@ InfobizSoft-ERP
 							<div class="card row">
 								<div class="card-block">
 									<h4 class="sub-title">Personal Details</h4>
-
+									@foreach($array['task'] as $task)
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Department</label>
 										<div class="col-sm-8">
 											<select name="emp_dept_name" class="form-control departmentcategory" id="dept_cat_id" required="true">
-												<option value="0" disabled="true" selected="true">Select Department</option>
-												@foreach($array['department'] as $dept)
-												<option value="{{$dept->id}}">{{$dept->dept_name}}</option>
+												<option value="{{$task->deptId}}">{{$task->dept_name}}</option>
+												@foreach($array['department'] as $department)
+												@if($task->deptId != $department->id)
+												<option value="{{$department->id}}">{{$department->dept_name}}</option>
+												@endif
 												@endforeach
 											</select>
 										</div>
@@ -56,7 +57,7 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">First Name</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter Your First Name" name="emp_fname" id="field1" required>
+											<input type="text" class="form-control" placeholder="Enter Your First Name" name="emp_fname" id="field1" value="{{$task->emp_fname}}" required>
 											<label><small>*your first name must match your NID name and contains the full length except the last name.</small></label>
 										</div>
 										<div id="fnameList"></div>
@@ -64,14 +65,14 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Last Name</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter Your Last Name" name="emp_lname" id="field2" required>
+											<input type="text" class="form-control" placeholder="Enter Your Last Name" name="emp_lname" id="field2" value="{{$task->emp_lname}}" required>
 											<label><small>*your last name must match your NID name.</small></label>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Email</label>
 										<div class="col-sm-8">
-											<input type="email" class="form-control" placeholder="Enter Your Email" name="emp_email" required>
+											<input type="email" class="form-control" placeholder="Enter Your Email" name="emp_email" value="{{$task->emp_email}}" required>
 										</div>
 									</div>																
 								</div>
@@ -85,39 +86,37 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Employee ID</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter Your Employee ID" name="emp_id" required>
+											<input type="text" class="form-control" placeholder="Enter Your Employee ID" name="emp_id" value="{{$task->emp_id}}"  required>
 										</div>
 									</div>	
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Issue Date</label>
 										<div class="col-sm-8">
-											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="taskStartDate" required>
+											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="taskStartDate" value="{{$task->emp_startDate}}"  required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">End Date</label>
 										<div class="col-sm-8">
-											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="taskEndDate" required>
+											<input type="date" class="form-control" placeholder="Enter Your Joining Date" name="taskEndDate" value="{{$task->emp_endDate}}"  required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Description</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter task description" name="taskDescription" required>
+											<input type="text" class="form-control" placeholder="Enter task description" name="taskDescription" value="{{$task->emp_taskDescription}}"  required>
 										</div>
 									</div>
+									<input type="hidden" name="task_id" value="{{$task->id}}">
 								</div>
 							</div>
-
-							
-
 						</div>
-
+						@endforeach
 					</div>				
 				</div>
 
 				<div class="mr-4 pr-3">
-					<button type="submit" class="btn btn-success btn-square pull-right mr-5"><i class="fa fa-plus-circle" aria-hidden="true"></i>Add Task</button>
+					<button type="submit" class="btn btn-success btn-square pull-right mr-5"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Task</button>
 				</div>
 				{!! Form::close() !!}
 			</div>
@@ -127,7 +126,5 @@ InfobizSoft-ERP
 @endsection
 
 @section('page_js')
-	
-	
 
 @endsection
