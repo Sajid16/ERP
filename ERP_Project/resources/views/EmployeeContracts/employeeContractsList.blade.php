@@ -10,30 +10,22 @@ InfobizSoft-ERP
 
 @section('dashboard_content')
 <div class="pcoded-content">
-	<div class="pcoded-inner-content">
-		<div class="main-body">
-			<div class="page-wrapper">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
 
-                <div class="heading" style="height:25px; color: black; font-size: 35px; font-weight: bold;">
-					Employee Contracts List
-				</div>
-				<br><br>
-				<div class="form-group pull-left mt-2" style="width:450px"> 
-					<input type="text" class="search form-control" placeholder="What you looking for?">
-				</div>
+<div class="heading" style="height:25px; color: black; font-size: 35px; font-weight: bold;">
+                    Employee Contracts List
+                </div>
+                <br><br>
+                <div class="form-group pull-left mt-2" style="width:450px">
+                    <input type="text" class="search form-control" placeholder="What you looking for?">
+                </div>
 
-				<div class="add_employee_contracts" style="text-align: right; padding-bottom: 20px;">
-					<a href="{{Route('addEmployeeContracts')}}" class="btn btn-primary" role="button" title="Add Employee Contracts"><i class="fa fa-plus" aria-hidden="true"></i>Add Employee Contracts</a>
-				</div>
+                <div class="add_employee_contracts" style="text-align: right; padding-bottom: 20px;">
+                    <a href="{{Route('addEmployeeContracts')}}" class="btn btn-primary" role="button" title="Add Employee Contracts"><i class="fa fa-plus" aria-hidden="true"></i>Add Employee Contracts</a>
+                </div>
 
-				<span class="counter pull-right"></span>
-				<table class="table table-hover table-bordered results">
-							<th>Contracts Type</th>
-							<th>Stat date</th>
-							<th>End Date</th>
-							<th>Salary</th>
-					<tbody>
-						$i=0;
                 <span class="counter pull-right"></span>
                 <table class="table table-hover table-bordered results">
                     <thead>
