@@ -25,7 +25,7 @@ InfobizSoft-ERP
                         </div>
                     </div>
                 </div>
-                {!! Form::open(['url'=>'/employee_management/employee_contracts_edit','method'=>'post', 'enctype'=>'multipart/form-data']) !!}
+                {!! Form::open(['url'=>'/employee_management/employee_contracts_update','method'=>'post', 'enctype'=>'multipart/form-data']) !!}
                 <form action=""method="" >	
 				<div class="page-body">
 					<div class="row">

@@ -14,13 +14,13 @@
 								@foreach($dashboard_array['sub_menu'] as $submenu)
 								<a href="javascript:void(0)">
 									<span class="pcoded-micon"><i class="feather icon-home"></i></span>
-									@if($submenu->parentId == $mainmenu->id)
+									@if($submenu->parentId == $mainmenu->access_Id)
 									<span class="pcoded-mtext">{{$submenu->name}}</span>
 									<ul class="pcoded-submenu">
 										@foreach($dashboard_array['sub_menu_list'] as $submenulist)
-										@if($submenulist->parentId == $submenu->id)
+										@if($submenulist->parentId == $submenu->access_Id)
 										<li>
-											<a href="{{route('employeelist')}}">
+											<a href="{{route($submenulist->links)}}">
 												<span class="">{{$submenulist->name}}</span>
 											</a>
 										</li>
@@ -28,14 +28,13 @@
 										@endforeach
 									</ul>
 									@endif
-									@endforeach
 								</a>
+								@endforeach
 							</li>
 							
 						</ul>
 					</li>
 					@endforeach
-					<!-- {{ Auth::user()->email }} -->
 				</ul>	
 			</div>
 		</nav>

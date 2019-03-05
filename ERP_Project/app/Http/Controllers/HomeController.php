@@ -29,26 +29,35 @@ class HomeController extends Controller
         $email = Auth::user()->email;
         $main_menu = DB::table('menuses')
                     ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
                     ->where('menuses.menu', '=', 1)
                     ->Where('menuses.action','=',1)
+                    ->select('menuses.name','erp_previledges.*')
                     ->Where('erp_previledges.user_email','=',$email)
                     ->get();
-        // $main_menu = DB::table('menuses')->select('id','name')->where('menu', '=', 1)->Where('action','=',1)->get();
-        $sub_menu =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        $sub_menu =  DB::table('erp_previledges')
+                    ->join('menuses', 'erp_previledges.access_Id', '=', 'menuses.id')
                     ->select('menuses.*','erp_previledges.*')
                     ->where('menuses.subMenu', '=', 1)
                     ->Where('menuses.action','=',1)
                     ->Where('erp_previledges.user_email','=',$email)
                     ->get();
-        $sub_menu_list =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+
+        $sub_menu_list =  DB::table('erp_previledges')
+                    ->join('menuses', 'erp_previledges.access_Id', '=', 'menuses.id')
                     ->select('menuses.*','erp_previledges.*')
                     ->where('menuses.subMenuView', '=', 1)
                     ->Where('menuses.action','=',1)
                     ->Where('erp_previledges.user_email','=',$email)
                     ->get();
+
+
+        // $sub_menu_list =  DB::table('menuses')
+        //             ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        //             ->select('menuses.*','erp_previledges.*')
+        //             ->where('menuses.subMenuView', '=', 1) 
+        //             ->Where('menuses.action','=',1)
+        //             ->Where('erp_previledges.user_email','=',$email)
+        //             ->get();
 
 
         $dashboard_array = [];

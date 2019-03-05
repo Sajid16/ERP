@@ -28,87 +28,95 @@ InfobizSoft-ERP
 
 				<span class="counter pull-right"></span>
 				<table class="table table-hover table-bordered results">
-					<thead>
-						<tr>
-							<th>Serial No.</th>
-							<th>Employee Name</th>
-							<th>Company Name</th>
-							<th>Department</th>
-							<th>Designation</th>
 							<th>Contracts Type</th>
 							<th>Stat date</th>
 							<th>End Date</th>
 							<th>Salary</th>
-							<th>Position</th>
-							<th>Action</th>
-						</tr>
-						<tr class="warning no-result">
-							<td colspan="4"><i class="fa fa-warning"></i> No result</td>
-						</tr>
-					</thead>
 					<tbody>
-					<?php
 						$i=0;
-					?>
-					@foreach($dashboard_array['emp_contracts_info'] as $empcontracts)
-						<tr>
-						
-							<td>{{++$i}}</td>
-					
-							<td>{{$empcontracts->contracts_name}}</td>
-							<td>{{$empcontracts->company_name}}</td>
-							<td>{{$empcontracts->dept_name}}</td>
-							<td>{{$empcontracts->deg_name}}</td>
-							<td>{{$empcontracts->contacts_types}}</td>
-							<td>{{$empcontracts->start_date}}</td>
-							<td>{{$empcontracts->end_date}}</td>
-							<td>{{$empcontracts->salary}}</td>              
-							<td>{{$empcontracts->position}}</td>              
-							<td style="text-align: center;">
-								<a href="{{url('employee_management/employee_contracts_edit')}}/{{$empcontracts->id}}" class="btn btn-primary" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
-								<a href="{{url('employee_management/employee_contracts_delete')}}/{{$empcontracts->id}}" class="btn btn-danger" role="button" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
-							</td>
-						</tr>
-						@endforeach	
-					</tbody>
-				</table>
+                <span class="counter pull-right"></span>
+                <table class="table table-hover table-bordered results">
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Employee Name</th>
+                            <th>Company Name</th>
+                            <th>Department</th>
+                            <th>Designation</th>
+                            <th>Contracts Type</th>
+                            <th>Stat date</th>
+                            <th>End Date</th>
+                            <th>Salary</th>
+                            <th>Position</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr class="warning no-result">
+                            <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        $i=0;
+                    ?>
+                    @foreach($dashboard_array['emp_contracts_info'] as $empcontracts)
+                        <tr>
+                        
+                            <td>{{++$i}}</td>
+                    
+                            <td>{{$empcontracts->contracts_name}}</td>
+                            <td>{{$empcontracts->company_name}}</td>
+                            <td>{{$empcontracts->dept_name}}</td>
+                            <td>{{$empcontracts->deg_name}}</td>
+                            <td>{{$empcontracts->contacts_types}}</td>
+                            <td>{{$empcontracts->start_date}}</td>
+                            <td>{{$empcontracts->end_date}}</td>
+                            <td>{{$empcontracts->salary}}</td>
+                            <td>{{$empcontracts->position}}</td>
+                            <td style="text-align: center;">
+                                <a href="{{url('employee_management/employee_contracts_edit')}}/{{$empcontracts->id}}" class="btn btn-primary" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+                                <a href="{{url('employee_management/employee_contracts_delete')}}/{{$empcontracts->id}}" class="btn btn-danger" role="button" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+                            </td>
+                        </tr>
+                        @endforeach 
+                    </tbody>
+                </table>
 
-            </div>
-        </div>
-    </div>
+</div>
+</div>
+</div>
 </div>
 @endsection
 
 @section('page_js')
 
 <script type="text/javascript">
-	
-	$(document).ready(function() {
-		$(".search").keyup(function () {
-			var searchTerm = $(".search").val();
-			var listItem = $('.results tbody').children('tr');
-			var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-			
-			$.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-				return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-			}
-		});
-			
-			$(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-				$(this).attr('visible','false');
-			});
+    
+    $(document).ready(function() {
+        $(".search").keyup(function () {
+            var searchTerm = $(".search").val();
+            var listItem = $('.results tbody').children('tr');
+            var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+            
+            $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+                return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+            }
+        });
+            
+            $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','false');
+            });
 
-			$(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-				$(this).attr('visible','true');
-			});
+            $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','true');
+            });
 
-			var jobCount = $('.results tbody tr[visible="true"]').length;
-			$('.counter').text(jobCount + ' item');
+            var jobCount = $('.results tbody tr[visible="true"]').length;
+            $('.counter').text(jobCount + ' item');
 
-			if(jobCount == '0') {$('.no-result').show();}
-			else {$('.no-result').hide();}
-		});
-	});
-	
+            if(jobCount == '0') {$('.no-result').show();}
+            else {$('.no-result').hide();}
+        });
+    });
+    
 </script>
 @endsection

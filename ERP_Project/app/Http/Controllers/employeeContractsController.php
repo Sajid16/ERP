@@ -119,8 +119,20 @@ class employeeContractsController extends Controller
                     ->Where('menuses.action','=',1)
                     ->Where('erp_previledges.user_email','=',$email)
                     ->get();
-        $sub_menu =  DB::table('menuses')->select('id','name','parentId')->where('subMenu','=', 1)->get();
-        $sub_menu_list =  DB::table('menuses')->select('id','name','parentId')->where('subMenuView','=', 1)->get();
+        $sub_menu =  DB::table('menuses')
+                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+                    ->select('menuses.*','erp_previledges.*')
+                    ->where('menuses.subMenu', '=', 1)
+                    ->Where('menuses.action','=',1)
+                    ->Where('erp_previledges.user_email','=',$email)
+                    ->get();
+        $sub_menu_list =  DB::table('menuses')
+                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+                    ->select('menuses.*','erp_previledges.*')
+                    ->where('menuses.subMenuView', '=', 1)
+                    ->Where('menuses.action','=',1)
+                    ->Where('erp_previledges.user_email','=',$email)
+                    ->get();
         
         $emp_contracts_info = DB::table('emp_contracts')
         ->join('departments', 'departments.id', '=', 'emp_contracts.dept_name')

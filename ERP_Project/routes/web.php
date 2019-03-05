@@ -59,7 +59,7 @@ Route::get('/employee_management/employee_contracts_list', 'employeeContractsCon
 Route::get('/employee_management/add_employee_contracts', 'employeeContractsController@add')->name('addEmployeeContracts');
 Route::post('/employee_management/add_employee_contracts', 'employeeContractsController@save');
 Route::get('/employee_management/employee_contracts_edit/{id}', 'employeeContractsController@edit');
-Route::post('/employee_management/employee_contracts_edit', 'employeeContractsController@update');
+Route::post('/employee_management/employee_contracts_update', 'employeeContractsController@update');
 Route::get('/employee_management/employee_contracts_delete/{id}', 'employeeContractsController@delete');
 
 
