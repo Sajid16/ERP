@@ -180,7 +180,6 @@
 <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-
 @yield('page_js')
 
 </body>

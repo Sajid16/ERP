@@ -70,6 +70,7 @@ InfobizSoft-ERP
 						@endforeach
 					</tbody>
 				</table>
+				{{$array['taskInfo']->links()}}
 			</div>
 		</div>
 	</div>

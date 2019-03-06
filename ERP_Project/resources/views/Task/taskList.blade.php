@@ -69,7 +69,7 @@ InfobizSoft-ERP
 							@endif
 							<td style="text-align: center;">
 								<a href="{{url('/task_management/task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
-								<a href="#" class="btn btn-danger" role="button" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
+								<a href="{{url('/task_management/task_delete')}}/{{$taskinfo->id}}" class="btn btn-danger" role="button" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
 							</td>
 						</tr>
 						<input type="hidden" name="taskid" value="{{$taskinfo->id}}">		

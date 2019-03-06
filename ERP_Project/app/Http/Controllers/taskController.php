@@ -165,6 +165,14 @@ class taskController extends Controller
         return redirect('/task_management/task_list')->with('message','Data has been Inserted Successfully.');
     }
 
+    public function taskListDelete($id){
+        echo $id;
+        $taskdelete = Task::find($id);
+        $taskdelete->delete();
+
+        return redirect('/task_management/task_list')->with('message','Data has been Deleted Successfully.');
+    }
+
     public function individualTask(){
         $email = Auth::user()->email;
         $main_menu = DB::table('menuses')
@@ -192,7 +200,7 @@ class taskController extends Controller
                     ->join('departments', 'tasks.deptId', '=', 'departments.id')
                     ->select('tasks.*','departments.dept_name')
                     ->Where('tasks.emp_email','=',$email)
-                    ->get();
+                    ->paginate(2);
 
         $array =[];
         $dashboard_array = [];

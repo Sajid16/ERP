@@ -30,8 +30,7 @@
 									@endif
 								</a>
 								@endforeach
-							</li>
-							
+							</li>							
 						</ul>
 					</li>
 					@endforeach

@@ -50,16 +50,6 @@ class HomeController extends Controller
                     ->Where('erp_previledges.user_email','=',$email)
                     ->get();
 
-
-        // $sub_menu_list =  DB::table('menuses')
-        //             ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-        //             ->select('menuses.*','erp_previledges.*')
-        //             ->where('menuses.subMenuView', '=', 1) 
-        //             ->Where('menuses.action','=',1)
-        //             ->Where('erp_previledges.user_email','=',$email)
-        //             ->get();
-
-
         $dashboard_array = [];
 
         //query;

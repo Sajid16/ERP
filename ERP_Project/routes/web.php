@@ -73,6 +73,7 @@ Route::get('/task_management/task_add','taskController@add')->name('taskadd');
 Route::post('/task_management/task_save','taskController@save');
 Route::get('/task_management/task_edit/{id}','taskController@taskEdit');
 Route::post('/task_management/task_update','taskController@update');
+Route::get('/task_management/task_delete/{id}', 'taskController@taskListDelete');
 Route::get('/task_management/individual_task','taskController@individualTask')->name('individualTask');
 Route::get('/task_management/individual_task_edit/{id}','taskController@individualTaskEdit');
 Route::post('/task_management/individual_task_update','taskController@taskStatusUpdate');
@@ -84,4 +85,7 @@ Route::post('/task_management/individual_task_update','taskController@taskStatus
 Route::get('/leave_management/leave_type','leaveTypeController@index')->name('leavetype');
 Route::post('/leave_management/leave_type','leaveTypeController@add_field');
 Route::get('/leave_management/leave_request','leaveController@index')->name('leaverequest');
-
+Route::post('/leave_management/leave_request_send','leaveController@sendRequest');
+Route::get('/leave_management/leave_request_review','leaveController@reviewRequest')->name('reviewRequest');
+Route::get('/leave_management/individual_leave_request_view','leaveController@individualViewRequest')->name('individualViewRequest');
+// Route::post('/leave_management/review_email_list','leaveController@reviewList')->name('reviewEmailList');
