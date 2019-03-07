@@ -2,39 +2,39 @@
 	<div class="pcoded-wrapper">
 		<nav class="pcoded-navbar">
 			<div class="pcoded-inner-navbar main-menu">
+				@foreach($dashboard_array['main_menu'] as $mainmenu)
 				<ul class="pcoded-item pcoded-left-item">
-					@foreach($dashboard_array['main_menu'] as $mainmenu)
 					<li class="pcoded-hasmenu active pcoded-trigger" style="margin-top: 5px;">
 						<a href="javascript:void(0)">
-							<span class="pcoded-micon"><i class="feather icon-home"></i></span>
-							<span class="pcoded-mtext">{{$mainmenu->name}}</span>
+							<span class=""><i class="feather icon-home"></i></span>
+							<span class="">{{$mainmenu->name}}</span>
 						</a>
+						@foreach($dashboard_array['sub_menu'] as $submenu)
 						<ul class="pcoded-submenu">		
 							<li class="pcoded-hasmenu active pcoded-trigger" style="margin-top: 0px;">
-								@foreach($dashboard_array['sub_menu'] as $submenu)
-								<a href="javascript:void(0)">
-									<span class="pcoded-micon"><i class="feather icon-home"></i></span>
+								<a href="javascript:void(0)">	
 									@if($submenu->parentId == $mainmenu->access_Id)
-									<span class="pcoded-mtext">{{$submenu->name}}</span>
-									<ul class="pcoded-submenu">
-										@foreach($dashboard_array['sub_menu_list'] as $submenulist)
+									<span class="">{{$submenu->name}}</span>
+									@foreach($dashboard_array['sub_menu_list'] as $submenulist)
 										@if($submenulist->parentId == $submenu->access_Id)
+									<ul class="pcoded-submenu">
 										<li>
 											<a href="{{route($submenulist->links)}}">
-												<span class="">{{$submenulist->name}}</span>
+												{{$submenulist->name}}
 											</a>
-										</li>
-										@endif
-										@endforeach
+										</li>	
 									</ul>
 									@endif
+										@endforeach
+									@endif
 								</a>
-								@endforeach
-							</li>							
+							</li>				
 						</ul>
+								@endforeach		
 					</li>
-					@endforeach
+					
 				</ul>	
+				@endforeach
 			</div>
 		</nav>
 		@yield('dashboard_content');

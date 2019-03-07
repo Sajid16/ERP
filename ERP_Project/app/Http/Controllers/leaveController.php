@@ -11,27 +11,27 @@ class leaveController extends Controller
     public function index(){
     	$email = Auth::user()->email;
         $main_menu = DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.menu', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.menu', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $sub_menu =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.subMenu', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.subMenu', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $sub_menu_list =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.subMenuView', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
-                    
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.subMenuView', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
+
         $user_info = DB::table('employee_infos')->where('emp_email','=',$email)->get();
         $leave_type = DB::table('leave_types')->get();
 
@@ -69,50 +69,52 @@ class leaveController extends Controller
 
     }
 
-    // public function reviewList(Request $request){
-    //     if($request->get('query'))
-    //     {
-    //         $query = $request->get('query');
-    //         $data =  DB::table('employee_infos')
-    //                 ->where('emp_email','LIKE','%{$query}%')
-    //                 ->get();
-    //         $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-    //         foreach ($data as $row) {
-    //             $output = '<li><a href="#">'.$row->emp_email.'</a></li>';
-    //         }
-    //         $output = '</ul>';
-    //         echo $output;
-    //     }
-    // }
+    public function reviewList(Request $request){
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $data =  DB::table('employee_infos')
+            ->where('emp_email','LIKE','%{$query}%')
+            ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach ($data as $row) {
+                $output .= '
+                <li><a href="#">'.$row->emp_email.'</a></li>
+                ';
+            }
+            $output = '</ul>';
+            echo $output;
+        }
+    }
 
     public function reviewRequest(){
         $email = Auth::user()->email;
         $main_menu = DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.menu', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.menu', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $sub_menu =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.subMenu', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.subMenu', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $sub_menu_list =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.subMenuView', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.subMenuView', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $leave_request = DB::table('leave_requests')
-                    ->join('leave_types', 'leave_requests.leaveReason', '=', 'leave_types.id')
-                    ->select('leave_requests.*','leave_types.*')
-                    ->Where('leave_requests.reviewer','=',$email)
-                    ->paginate(2);
+        ->join('leave_types', 'leave_requests.leaveReason', '=', 'leave_types.id')
+        ->select('leave_requests.*','leave_types.*')
+        ->Where('leave_requests.reviewer','=',$email)
+        ->paginate(2);
 
         $array =[];
         $dashboard_array = [];
@@ -128,31 +130,31 @@ class leaveController extends Controller
     public function individualViewRequest(){
         $email = Auth::user()->email;
         $main_menu = DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.menu', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.menu', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $sub_menu =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.subMenu', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.subMenu', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $sub_menu_list =  DB::table('menuses')
-                    ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
-                    ->select('menuses.*','erp_previledges.*')
-                    ->where('menuses.subMenuView', '=', 1)
-                    ->Where('menuses.action','=',1)
-                    ->Where('erp_previledges.user_email','=',$email)
-                    ->get();
+        ->join('erp_previledges', 'menuses.id', '=', 'erp_previledges.access_Id')
+        ->select('menuses.*','erp_previledges.*')
+        ->where('menuses.subMenuView', '=', 1)
+        ->Where('menuses.action','=',1)
+        ->Where('erp_previledges.user_email','=',$email)
+        ->get();
         $leave_request = DB::table('leave_requests')
-                    ->join('leave_types', 'leave_requests.leaveReason', '=', 'leave_types.id')
-                    ->select('leave_requests.*','leave_types.*')
-                    ->Where('leave_requests.emp_email','=',$email)
-                    ->paginate(2);
+        ->join('leave_types', 'leave_requests.leaveReason', '=', 'leave_types.id')
+        ->select('leave_requests.*','leave_types.*')
+        ->Where('leave_requests.emp_email','=',$email)
+        ->paginate(2);
 
         $array =[];
         $dashboard_array = [];

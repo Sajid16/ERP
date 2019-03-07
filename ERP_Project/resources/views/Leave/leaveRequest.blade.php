@@ -6,9 +6,6 @@ InfobizSoft-ERP
 
 @section('page_style')
 <link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/style.css')}}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 @endsection
 
 @section('dashboard_content')
@@ -113,7 +110,9 @@ InfobizSoft-ERP
 										<label class="col-sm-4 col-form-label">Reviewer</label>
 										<div class="col-sm-8">
 											<input type="email" class="form-control" placeholder="Reviewer Email" name="reviewer_mail" id="review_mail" required>
-											<div id="reviewer_list"></div>
+											<div id="reviewer_list">
+												
+											</div>
 										</div>
 									</div>
 									@endforeach
@@ -188,5 +187,32 @@ InfobizSoft-ERP
 		});
 	}
 
+	$(document).ready(function(){
+
+ $('#reviewer_mail').keyup(function(){ 
+        var query = $(this).val();
+        if(query != '')
+        {
+         var _token = $('input[name="_token"]').val();
+         $.ajax({
+          url:"{{ route('reviewEmailList') }}",
+          method:"POST",
+          data:{query:query, _token:_token},
+          success:function(data){
+           $('#reviewer_list').fadeIn();  
+                    $('#reviewer_list').html(data);
+          }
+         });
+        }
+    });
+
+    $(document).on('click', 'li', function(){  
+        $('#reviewer_mail').val($(this).text());  
+        $('#reviewer_list').fadeOut();  
+    });  
+
+});
+
 </script>
+
 @endsection

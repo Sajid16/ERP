@@ -33,6 +33,7 @@ InfobizSoft-ERP
 							<th>Serial No.</th>
 							<th>Profile Image</th>
 							<th>Name</th>
+							<th>Employee Email</th>
 							<th>Department & Designation</th>
 							<th>Joining Date</th>
 							<th>Contact No.</th>
@@ -49,13 +50,14 @@ InfobizSoft-ERP
 							<th scope="row">{{++$i}}</th>
 							<td style="height: 100px; width:100px;"><img src="{{asset($empinfo->emp_image)}}" style="height: 100%; width: 100%;"></td>
 							<td>{{$empinfo->emp_fname." ".$empinfo->emp_lname}}</td>
+							<td>{{$empinfo->emp_email}}</td>
 							<td>{{$empinfo->dept_name}}<br>
 								{{$empinfo->deg_name}}</td>
 								<td>{{$empinfo->emp_joinDate}}</td>
 								<td>{{$empinfo->emp_phone_number}}</td>
 								<td style="text-align: center;">
 									<a href="{{url('employee_management/employee_edit')}}/{{$empinfo->id}}" class="btn btn-primary" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i>View</a>
-									<a href="{{url('employee_management/employee_edit')}}/{{$empinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
+									<a href="{{url('employee_management/employee_edit')}}/{{$empinfo->id}}" class="btn btn-success" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>
 									<a href="{{url('employee_management/employee_delete')}}/{{$empinfo->id}}" class="btn btn-danger" role="button" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a>
 								</td>
 							</tr>
