@@ -146,6 +146,7 @@
 <script src="{{asset('dashboard/files/assets/js/pcoded.min.js')}}"></script>
 <script src="{{asset('dashboard/files/assets/js/vartical-layout.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/files/assets/js/script.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 @yield('page_js')

@@ -34,7 +34,14 @@ class leaveController extends Controller
 
         $user_info = DB::table('employee_infos')->where('emp_email','=',$email)->get();
         $leave_type = DB::table('leave_types')->get();
-
+        $leave_count = DB::table('leave_requests')
+                    ->where('emp_email','=',$email)
+                    ->where('status','=',1)
+                    ->sum('duration');
+        $user_leave =DB::table('employee_infos')
+                    ->where('emp_email','=',$email)
+                    ->sum(DB::raw('annum_leave+casual_leave+sick_leave+others_leave'));
+                    
 
         $dashboard_array = [];
         $array = [];
@@ -45,7 +52,7 @@ class leaveController extends Controller
         $dashboard_array['sub_menu_list'] = $sub_menu_list;
         $array['user_info'] = $user_info;
         $array['leave_type'] = $leave_type;
-        return view('Leave.leaveRequest',compact('dashboard_array','array'));
+        return view('Leave.leaveRequest',compact('dashboard_array','array','leave_count','user_leave'));
     }
 
     public function sendRequest(Request $request){
@@ -69,23 +76,18 @@ class leaveController extends Controller
 
     }
 
-    public function reviewList(Request $request){
-        if($request->get('query'))
-        {
-            $query = $request->get('query');
-            $data =  DB::table('employee_infos')
-            ->where('emp_email','LIKE','%{$query}%')
-            ->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-            foreach ($data as $row) {
-                $output .= '
-                <li><a href="#">'.$row->emp_email.'</a></li>
-                ';
-            }
-            $output = '</ul>';
-            echo $output;
-        }
-    }
+    // public function reviewList($email){
+        
+    //         if(empty($id)){
+    //             return [];
+    //         }
+
+    //         $review_email = DB::table('employee_infos')
+    //                         ->where('emp_email','LIKE',"$email%")
+    //                         ->get();
+
+    //         return $review_email;
+    // }
 
     public function reviewRequest(){
         $email = Auth::user()->email;

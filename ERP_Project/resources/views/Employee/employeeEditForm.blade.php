@@ -240,8 +240,8 @@ InfobizSoft-ERP
 									<div class="form-group row" >
 										<label class="col-sm-4 col-form-label">Annual Leave</label>
 										<div class="col-sm-8">
-											<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
-												<option value="0" disabled="true" selected="true">Select Days</option>
+											<select name="emp_annum_leave" class="form-control designationcategory" id="deg_cat">
+												<option value="$empEdit->emp_annum_leave" disabled="true" selected="true">{{$empEdit->annum_leave}}</option>
 												@for($j=1;$j<=31;$j++){
 												<option value="{{$j}}">{{$j}}</option>;
 											}
@@ -252,8 +252,8 @@ InfobizSoft-ERP
 								<div class="form-group row" >
 									<label class="col-sm-4 col-form-label">Casual Leave</label>
 									<div class="col-sm-8">
-										<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
-											<option value="0" disabled="true" selected="true">Select Days</option>
+										<select name="emp_casual_leave" class="form-control designationcategory" id="deg_cat">
+											<option value="$empEdit->casual_leave" disabled="true" selected="true">{{$empEdit->casual_leave}}</option>
 											@for($j=1;$j<=31;$j++){
 											<option value="{{$j}}">{{$j}}</option>;
 										}
@@ -262,10 +262,10 @@ InfobizSoft-ERP
 								</div>
 							</div>
 							<div class="form-group row" >
-								<label class="col-sm-4 col-form-label">Maternity Leave</label>
+								<label class="col-sm-4 col-form-label">Sick Leave</label>
 								<div class="col-sm-8">
-									<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
-										<option value="0" disabled="true" selected="true">Select Days</option>
+									<select name="$empEdit->sick_leave" class="form-control designationcategory" id="deg_cat">
+										<option value="0" disabled="true" selected="true">{{$empEdit->sick_leave}}</option>
 										@for($j=1;$j<=31;$j++){
 										<option value="{{$j}}">{{$j}}</option>;
 									}
@@ -274,11 +274,11 @@ InfobizSoft-ERP
 							</div>
 						</div>
 						<div class="form-group row" >
-							<label class="col-sm-4 col-form-label">Paternity Leave</label>
+							<label class="col-sm-4 col-form-label">Others Leave</label>
 							<div class="col-sm-8">
-								<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
-									<option value="0" disabled="true" selected="true">Select Days</option>
-									@for($j=1;$j<=31;$j++){
+								<select name="$empEdit->others_leave" class="form-control designationcategory" id="deg_cat">
+									<option value="0" disabled="true" selected="true">{{$empEdit->others_leave}}</option>
+									@for($j=0;$j<=31;$j++){
 									<option value="{{$j}}">{{$j}}</option>;
 								}
 								@endfor

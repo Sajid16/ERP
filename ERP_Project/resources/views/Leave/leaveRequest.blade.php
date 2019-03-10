@@ -35,10 +35,9 @@ InfobizSoft-ERP
 				<div class="page-body">
 					<div class="row">
 						<div class="col-sm-6">
-
 							<div class="card row">
 								<div class="card-block">
-									<h4 class="sub-title">Leave Details</h4>
+									<h4 class="sub-title">Leave Request Details</h4>
 									@foreach($array['user_info'] as $user_info)
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">First Name</label>
@@ -119,6 +118,34 @@ InfobizSoft-ERP
 								</div>
 							</div>
 						</div>
+						<div class="col-sm-1">
+							
+						</div>
+
+						<div class="col-sm-4" style="margin-top: 150px;">
+
+							<div class="card row">
+								<div class="card-block">
+									<h4 class="sub-title">Leave Details</h4>
+
+									@foreach($array['user_info'] as $user_info)
+									<label>Annual Leave: </label><span> {{$user_info->annum_leave}} days</span><br>
+									<label>Sick Leave:</label><span> {{$user_info->sick_leave}} days</span><br>
+									<label>Casual Leave: </label><span> {{$user_info->casual_leave}} days</span><br>
+									@if($user_info->others_leave == "")
+									<label>Other Leaves:</label><span> Not applicable</span><br>
+									@else
+									<label>Other Leaves:</label><span> {{$user_info->others_leave}} days</span><br>			
+									@endif
+						
+									<label>Total Leave Days Taken:</label> <span><?php echo" ".$leave_count." days"; ?></span><br>
+									<label>Total Leave Days Remaining:</label> <span><?php echo $user_leave-$leave_count." days";?></span>
+									@endforeach
+								
+								</div>
+							</div>
+						</div>
+
 					</div>				
 				</div>
 
@@ -135,14 +162,12 @@ InfobizSoft-ERP
 @section('page_js')
 
 <script type="text/javascript">
-
 	var start,end;
 	function myFunction1(){
 		start = document.getElementById("start").value;
 		end = document.getElementById("end").value;
 		$('#date1').datepicker();
 		$('#date2').datepicker();
-
 		$('#date2').change(function () {
 			var diff = $('#date1').datepicker("getDate") - $('#date2').datepicker("getDate");
 			diff = diff / (1000 * 60 * 60 * 24) * -1;
@@ -186,33 +211,7 @@ InfobizSoft-ERP
 			}
 		});
 	}
-
-	$(document).ready(function(){
-
- $('#reviewer_mail').keyup(function(){ 
-        var query = $(this).val();
-        if(query != '')
-        {
-         var _token = $('input[name="_token"]').val();
-         $.ajax({
-          url:"{{ route('reviewEmailList') }}",
-          method:"POST",
-          data:{query:query, _token:_token},
-          success:function(data){
-           $('#reviewer_list').fadeIn();  
-                    $('#reviewer_list').html(data);
-          }
-         });
-        }
-    });
-
-    $(document).on('click', 'li', function(){  
-        $('#reviewer_mail').val($(this).text());  
-        $('#reviewer_list').fadeOut();  
-    });  
-
-});
-
+	
 </script>
 
 @endsection

@@ -133,6 +133,10 @@ class employeeController extends Controller
         $employeeinfo->emp_bankName = $request->emp_bank_name;
         $employeeinfo->emp_bankBranch = $request->emp_branch;
         $employeeinfo->emp_swiftCode = $request->emp_swift_code;
+        $employeeinfo->annum_leave = $request->emp_annum_leave;
+        $employeeinfo->casual_leave = $request->emp_casual_leave;
+        $employeeinfo->sick_leave = $request->emp_sick_leave;
+        $employeeinfo->others_leave = $request->emp_other_leave;
 
         $employeeinfo->save();
 
@@ -284,6 +288,10 @@ class employeeController extends Controller
         $employeeinfo->emp_bankName = $request->emp_bank_name;
         $employeeinfo->emp_bankBranch = $request->emp_branch;
         $employeeinfo->emp_swiftCode = $request->emp_swift_code;
+        $employeeinfo->annum_leave = $request->emp_annum_leave;
+        $employeeinfo->casual_leave = $request->emp_casual_leave;
+        $employeeinfo->sick_leave = $request->emp_sick_leave;
+        $employeeinfo->others_leave = $request->emp_other_leave;
 
         $employeeinfo->save();
 

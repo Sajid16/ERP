@@ -238,7 +238,7 @@ InfobizSoft-ERP
 									<div class="form-group row" >
 										<label class="col-sm-4 col-form-label">Annual Leave</label>
 										<div class="col-sm-8">
-											<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
+											<select name="emp_annum_leave" class="form-control designationcategory" id="deg_cat">
 												<option value="0" disabled="true" selected="true">Select Days</option>
 												@for($j=1;$j<=31;$j++){
 												<option value="{{$j}}">{{$j}}</option>;
@@ -250,7 +250,7 @@ InfobizSoft-ERP
 								<div class="form-group row" >
 									<label class="col-sm-4 col-form-label">Casual Leave</label>
 									<div class="col-sm-8">
-										<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
+										<select name="emp_casual_leave" class="form-control designationcategory" id="deg_cat">
 											<option value="0" disabled="true" selected="true">Select Days</option>
 											@for($j=1;$j<=31;$j++){
 											<option value="{{$j}}">{{$j}}</option>;
@@ -260,9 +260,9 @@ InfobizSoft-ERP
 								</div>
 							</div>
 							<div class="form-group row" >
-								<label class="col-sm-4 col-form-label">Maternity Leave</label>
+								<label class="col-sm-4 col-form-label">Sick Leave</label>
 								<div class="col-sm-8">
-									<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
+									<select name="emp_sick_leave" class="form-control designationcategory" id="deg_cat">
 										<option value="0" disabled="true" selected="true">Select Days</option>
 										@for($j=1;$j<=31;$j++){
 										<option value="{{$j}}">{{$j}}</option>;
@@ -272,11 +272,11 @@ InfobizSoft-ERP
 							</div>
 						</div>
 						<div class="form-group row" >
-							<label class="col-sm-4 col-form-label">Paternity Leave</label>
+							<label class="col-sm-4 col-form-label">Others Leave</label>
 							<div class="col-sm-8">
-								<select name="emp_deg_name" class="form-control designationcategory" id="deg_cat">
+								<select name="emp_other_leave" class="form-control designationcategory" id="deg_cat">
 									<option value="0" disabled="true" selected="true">Select Days</option>
-									@for($j=1;$j<=31;$j++){
+									@for($j=0;$j<=31;$j++){
 									<option value="{{$j}}">{{$j}}</option>;
 								}
 								@endfor
