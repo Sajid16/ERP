@@ -14,9 +14,11 @@
 	<link rel="icon" href="https://colorlib.com//polygon/adminty/files/assets/images/favicon.ico" type="image/x-icon">
 
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/bower_components/bootstrap/css/bootstrap.min.css')}}">
 
 	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/icon/feather/css/feather.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/style.css')}}">
 
 	@yield('page_style')
 	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/jquery.mCustomScrollbar.css')}}">
@@ -137,17 +139,31 @@
 </div>
 
 
-<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="{{asset('dashboard/files/bower_components/jquery/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('dashboard/files/bower_components/jquery-ui/js/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/files/bower_components/popper.js/js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/files/bower_components/bootstrap/js/bootstrap.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('dashboard/files/bower_components/jquery-slimscroll/js/jquery.slimscroll.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('dashboard/files/bower_components/modernizr/js/modernizr.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('dashboard/files/bower_components/chart.js/js/Chart.js')}}"></script>
+
+<script src="{{asset('dashboard/files/assets/pages/widget/amchart/amcharts.js')}}"></script>
+<script src="{{asset('dashboard/files/assets/pages/widget/amchart/serial.js')}}"></script>
+<script src="{{asset('dashboard/files/assets/pages/widget/amchart/light.js')}}"></script>
 <script src="{{asset('dashboard/files/assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('dashboard/files/assets/js/SmoothScroll.js')}}"></script>
 <script src="{{asset('dashboard/files/assets/js/pcoded.min.js')}}"></script>
+
 <script src="{{asset('dashboard/files/assets/js/vartical-layout.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('dashboard/files/assets/pages/dashboard/custom-dashboard.js')}}"></script>
 <script type="text/javascript" src="{{asset('dashboard/files/assets/js/script.min.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 
 @yield('page_js')
 

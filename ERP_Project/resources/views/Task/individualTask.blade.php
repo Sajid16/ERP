@@ -57,14 +57,18 @@ InfobizSoft-ERP
 							<td>{{$taskinfo->emp_endDate}}</td>
 							@if($taskinfo->status == 1)
 							<td><span class="badge badge-primary" style="font-size: 13px;">On Progress</span></td>
-							@elseif($taskinfo->status == 2)
-							<td><span class="badge badge-success" style="font-size: 13px;">Completed</span></td>
-							@else
-							<td><span class="badge badge-warning" style="font-size: 13px;">Assigned</span></td>
-							@endif
 							<td style="text-align: center;">
 								<a href="{{url('/task_management/individual_task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Status</a>
 							</td>
+							@elseif($taskinfo->status == 2)
+							<td><span class="badge badge-success" style="font-size: 13px;">Completed</span></td>
+							<td>Review Completed</td>
+							@else
+							<td><span class="badge badge-warning" style="font-size: 13px;">Assigned</span></td>
+							<td style="text-align: center;">
+								<a href="{{url('/task_management/individual_task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Status</a>
+							</td>
+							@endif
 						</tr>
 						<input type="hidden" name="taskid" value="{{$taskinfo->id}}">		
 						@endforeach

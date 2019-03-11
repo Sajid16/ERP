@@ -128,6 +128,7 @@ class employeeController extends Controller
         $employeeinfo->emp_desg = $request->emp_deg_name;
         $employeeinfo->emp_joinDate = $request->emp_joining_date;
         $employeeinfo->emp_joinSalary = $request->emp_joining_salary;
+        $employeeinfo->emp_leader_email = $request->emp_team_leader;
         $employeeinfo->emp_accName = $request->emp_account_name;
         $employeeinfo->emp_accNumber = $request->emp_account_number;
         $employeeinfo->emp_bankName = $request->emp_bank_name;
@@ -278,7 +279,7 @@ class employeeController extends Controller
         // $employeeinfo->emp_joinLetter = 'test';
         // $employeeinfo->emp_contract = 'test';
         // $employeeinfo->emp_idProof = 'test';
-        $employeeinfo->emp_id = 'infobiz'.$request->emp_id;
+        $employeeinfo->emp_id = $request->emp_id;
         $employeeinfo->emp_dept = $request->emp_dept_name;
         $employeeinfo->emp_desg = $request->emp_deg_name;
         $employeeinfo->emp_joinDate = $request->emp_joining_date;

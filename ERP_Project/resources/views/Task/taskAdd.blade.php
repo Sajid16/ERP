@@ -103,7 +103,7 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Description</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter task description" name="taskDescription" required>
+											<textarea type="text" class="form-control" placeholder="Enter task description" name="taskDescription" required></textarea>
 										</div>
 									</div>
 								</div>

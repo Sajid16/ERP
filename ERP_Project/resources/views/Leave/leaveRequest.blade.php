@@ -6,6 +6,9 @@ InfobizSoft-ERP
 
 @section('page_style')
 <link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/style.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 @endsection
 
 @section('dashboard_content')
@@ -35,9 +38,10 @@ InfobizSoft-ERP
 				<div class="page-body">
 					<div class="row">
 						<div class="col-sm-6">
+
 							<div class="card row">
 								<div class="card-block">
-									<h4 class="sub-title">Leave Request Details</h4>
+									<h4 class="sub-title">Leave Details</h4>
 									@foreach($array['user_info'] as $user_info)
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">First Name</label>
@@ -108,20 +112,19 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Reviewer</label>
 										<div class="col-sm-8">
-											<input type="email" class="form-control" placeholder="Reviewer Email" name="reviewer_mail" id="review_mail" required>
-											<div id="reviewer_list">
-												
-											</div>
+											<input type="email" class="form-control" placeholder="Reviewer Email" name="reviewer_mail" id="review_mail" value="{{$user_info->emp_leader_email}}" readonly="true" required>
+											<div id="reviewer_list"></div>
 										</div>
 									</div>
 									@endforeach
 								</div>
 							</div>
 						</div>
+
 						<div class="col-sm-1">
 							
 						</div>
-
+						
 						<div class="col-sm-4" style="margin-top: 150px;">
 
 							<div class="card row">
@@ -137,11 +140,18 @@ InfobizSoft-ERP
 									@else
 									<label>Other Leaves:</label><span> {{$user_info->others_leave}} days</span><br>			
 									@endif
-						
 									<label>Total Leave Days Taken:</label> <span><?php echo" ".$leave_count." days"; ?></span><br>
-									<label>Total Leave Days Remaining:</label> <span><?php echo $user_leave-$leave_count." days";?></span>
+									<?php $leave_remain = 0; 
+									$leave_remain = $user_leave-$leave_count;
+									?>
+									@if($leave_remain < 0)
+									<label>Total Leave Days Remaining:</label> <span><?php echo " No leaves are remaining";?></span>
+									<label>Total Extra Leave Days taken:</label> <span><?php echo ($leave_remain*-1)." days";?></span>
+									@else
+									<label>Total Leave Days remaining:</label> <span><?php echo $leave_remain." days";?></span>
+									@endif
 									@endforeach
-								
+
 								</div>
 							</div>
 						</div>
@@ -162,12 +172,14 @@ InfobizSoft-ERP
 @section('page_js')
 
 <script type="text/javascript">
+
 	var start,end;
 	function myFunction1(){
 		start = document.getElementById("start").value;
 		end = document.getElementById("end").value;
 		$('#date1').datepicker();
 		$('#date2').datepicker();
+
 		$('#date2').change(function () {
 			var diff = $('#date1').datepicker("getDate") - $('#date2').datepicker("getDate");
 			diff = diff / (1000 * 60 * 60 * 24) * -1;
@@ -211,7 +223,6 @@ InfobizSoft-ERP
 			}
 		});
 	}
-	
-</script>
 
+</script>
 @endsection
