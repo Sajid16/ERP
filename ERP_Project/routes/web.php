@@ -88,6 +88,8 @@ Route::get('/leave_management/leave_request','leaveController@index')->name('lea
 Route::post('/leave_management/leave_request_send','leaveController@sendRequest');
 Route::get('/leave_management/leave_request_review','leaveController@reviewRequest')->name('reviewRequest');
 Route::get('/leave_management/individual_leave_request_view','leaveController@individualViewRequest')->name('individualViewRequest');
+Route::get('/leave_management/leave_request_review_status/{id}/{email}','leaveController@reviewRequestStatus');
+Route::post('/leave_management/leave_status_update','leaveController@reviewRequestStatusUpdate');
 
 // -------------------------------------------------------------------------------------------------
 //  profile management settings url

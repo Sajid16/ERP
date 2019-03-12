@@ -12,27 +12,27 @@
 						@foreach($dashboard_array['sub_menu'] as $submenu)
 						<ul class="pcoded-submenu">		
 							<li class="pcoded-hasmenu active pcoded-trigger" style="margin-top: 0px;">
-								<a href="javascript:void(0)">	
-									@if($submenu->parentId == $mainmenu->access_Id)
+
+								@if($submenu->parentId == $mainmenu->access_Id)
+								<a href="javascript:void(0)">
 									<span class="">{{$submenu->name}}</span>
-									@foreach($dashboard_array['sub_menu_list'] as $submenulist)
-										@if($submenulist->parentId == $submenu->access_Id)
-									<ul class="pcoded-submenu">
-										<li>
-											<a href="{{route($submenulist->links)}}">
-												{{$submenulist->name}}
-											</a>
-										</li>	
-									</ul>
-									@endif
-										@endforeach
-									@endif
 								</a>
+								@foreach($dashboard_array['sub_menu_list'] as $submenulist)
+								@if($submenulist->parentId == $submenu->access_Id)
+								<ul class="pcoded-submenu">
+									<li>
+										<a href="{{route($submenulist->links)}}">
+											{{$submenulist->name}}
+										</a>
+									</li>	
+								</ul>
+								@endif
+								@endforeach
+								@endif	
 							</li>				
 						</ul>
-								@endforeach		
+						@endforeach		
 					</li>
-					
 				</ul>	
 				@endforeach
 			</div>

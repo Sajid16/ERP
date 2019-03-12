@@ -292,7 +292,7 @@ class employeeController extends Controller
         $employeeinfo->annum_leave = $request->emp_annum_leave;
         $employeeinfo->casual_leave = $request->emp_casual_leave;
         $employeeinfo->sick_leave = $request->emp_sick_leave;
-        $employeeinfo->others_leave = $request->emp_other_leave;
+        $employeeinfo->others_leave = $request->emp_others_leave;
 
         $employeeinfo->save();
 

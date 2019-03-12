@@ -28,7 +28,7 @@ InfobizSoft-ERP
 
 				<span class="counter pull-right"></span>
 				<div class="caption" style="padding-top: 15px; padding-bottom: 15px; background-color: 	#202020; font-size: 18px; color:white;">
-					<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px"></i> Indivivual Leave Record List
+					<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px; padding-left: 5px"></i> Individual Leave Record List
 				</div>
 				<table class="table table-hover table-bordered results">
 					<thead>

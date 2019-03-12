@@ -103,9 +103,9 @@ InfobizSoft-ERP
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-sm-4 col-form-label">Department</label>
+										<label class="col-sm-4 col-form-label">Status</label>
 										<div class="col-sm-8">
-											<select name="task_status" class="form-control departmentcategory" id="dept_cat_id" required="true" readonly>
+											<select name="task_status" class="form-control" required="true">
 												<option value="1">On Progress</option>
 												<option value="2">Completed</option>
 											</select>

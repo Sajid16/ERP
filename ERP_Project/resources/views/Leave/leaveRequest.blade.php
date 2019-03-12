@@ -146,7 +146,9 @@ InfobizSoft-ERP
 									?>
 									@if($leave_remain < 0)
 									<label>Total Leave Days Remaining:</label> <span><?php echo " No leaves are remaining";?></span>
-									<label>Total Extra Leave Days taken:</label> <span><?php echo ($leave_remain*-1)." days";?></span>
+									<div style="background-color: red; color: white;">
+										<label>Total Extra Leave Days taken:</label> <span><?php echo ($leave_remain*-1)." days";?></span>
+									</div>
 									@else
 									<label>Total Leave Days remaining:</label> <span><?php echo $leave_remain." days";?></span>
 									@endif
@@ -159,8 +161,8 @@ InfobizSoft-ERP
 					</div>				
 				</div>
 
-				<div style="float: left;">
-					<button type="submit" class="btn btn-success btn-square pull-right mr-5"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send Request</button>
+				<div>
+					<button type="submit" class="btn btn-success btn-square pull-right mr-5" style="width: 50%; float: left;;"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send Request</button>
 				</div>
 				{!! Form::close() !!}
 			</div>
