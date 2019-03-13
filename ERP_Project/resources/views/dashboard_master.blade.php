@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/bower_components/bootstrap/css/bootstrap.min.css')}}">
 
 	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/icon/feather/css/feather.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/style.css')}}">
+<!-- 	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/style.css')}}"> -->
 
 	@yield('page_style')
 	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/files/assets/css/jquery.mCustomScrollbar.css')}}">

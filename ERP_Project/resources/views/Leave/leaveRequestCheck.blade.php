@@ -60,9 +60,29 @@ InfobizSoft-ERP
 										</div>
 									</div>
 									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">Start session</label>
+										<div class="col-sm-8">
+											@if($leave_request->sessionStart == 1)
+											<input type="text" class="form-control" name="stratSession" value="Morning" readonly="true">
+											@else
+											<input type="text" class="form-control" name="stratSession" value="Afternoon" readonly="true">
+											@endif
+										</div>
+									</div>	
+									<div class="form-group row">
+										<label class="col-sm-4 col-form-label">End session</label>
+										<div class="col-sm-8">
+											@if($leave_request->sessionEnd == 1)
+											<input type="text" class="form-control" name="endSession" value="Morning" readonly="true">
+											@else
+											<input type="text" class="form-control" name="endSession" value="Afternoon" readonly="true">
+											@endif
+										</div>
+									</div>	
+									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Duration</label>
 										<div class="col-sm-8">
-											<input type="text" class="form-control" placeholder="Enter Your Last Name" name="duration" id="field2" value="{{$leave_request->duration}}" readonly="true">
+											<input type="text" class="form-control" placeholder="Enter Your Last Name" name="duration" id="field2" value="{{$leave_request->duration}} days" readonly="true">
 										</div>
 									</div>	
 									<div class="card row">
@@ -88,7 +108,7 @@ InfobizSoft-ERP
 											<div class="form-group row">
 												<label class="col-sm-4 col-form-label">Description</label>
 												<div class="col-sm-8">
-													<textarea type="text" class="form-control" placeholder="Leave description" name="leaveDescription" value="{{$leave_request->description}}" readonly="true"  required></textarea>
+													<textarea type="text" class="form-control" placeholder="Leave description" name="leaveDescription" readonly="true"  required>{{$leave_request->description}}</textarea>
 												</div>
 											</div>
 											<div class="form-group row">
@@ -126,19 +146,20 @@ InfobizSoft-ERP
 									@if($user_info->others_leave == "")
 									<label>Other Leaves:</label><span> Not applicable</span><br>
 									@else
-									<label>Other Leaves:</label><span> {{$user_info->others_leave}} days</span><br>			
+									<label>Leave days allocated:</label><span> {{$user_info->others_leave}} days</span><br>			
 									@endif
-									<label>Total Leave Days Taken:</label> <span><?php echo" ".$leave_count." days"; ?></span><br>
+									<label>Other Leaves:</label><span><?php echo " ".$user_leave." days"; ?></span><br>
+									<label>Leave Days Taken:</label> <span><?php echo" ".$leave_count." days"; ?></span><br>
 									<?php $leave_remain = 0; 
 									$leave_remain = $user_leave-$leave_count;
 									?>
 									@if($leave_remain < 0)
-									<label>Total Leave Days Remaining:</label> <span><?php echo " No leaves are remaining";?></span>
+									<label>Leave Days Remaining:</label> <span><?php echo " No leaves are remaining";?></span>
 									<div style="background-color: red; color: white;">
-										<label>Total Extra Leave Days taken:</label> <span><?php echo ($leave_remain*-1)." days";?></span>
+										<label>Extra Leave Days taken:</label> <span><?php echo ($leave_remain*-1)." days";?></span>
 									</div>
 									@else
-									<label>Total Leave Days remaining:</label> <span><?php echo $leave_remain." days";?></span>
+									<label>Leave Days remaining:</label> <span><?php echo $leave_remain." days";?></span>
 									@endif
 									@endforeach
 

@@ -70,6 +70,7 @@ class leaveController extends Controller
         $leave_request->dateTo = $request->leave_to;
         $leave_request->duration = $request->duration;
         $leave_request->leaveReason = $request->leave_reason;
+        $leave_request->description = $request->leaveDescription;
         $leave_request->reviewer = $request->reviewer_mail;
 
         $leave_request->save();
@@ -117,7 +118,7 @@ class leaveController extends Controller
         ->join('leave_types', 'leave_requests.leaveReason', '=', 'leave_types.id')
         ->select('leave_requests.*','leave_types.name')
         ->Where('leave_requests.reviewer','=',$email)
-        ->paginate(2);
+        ->paginate(10);
 
         $array =[];
         $dashboard_array = [];

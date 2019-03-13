@@ -92,6 +92,14 @@ Route::get('/leave_management/leave_request_review_status/{id}/{email}','leaveCo
 Route::post('/leave_management/leave_status_update','leaveController@reviewRequestStatusUpdate');
 
 // -------------------------------------------------------------------------------------------------
+//  training management settings url
+// -------------------------------------------------------------------------------------------------
+
+Route::get('/training_management/training_topics','trainingTopicsController@index')->name('trainingTopics');
+Route::post('/training_management/training_topics','trainingTopicsController@add_field');
+Route::get('/training_management/my_training','trainingController@index')->name('myTraining');
+
+// -------------------------------------------------------------------------------------------------
 //  profile management settings url
 // -------------------------------------------------------------------------------------------------
 

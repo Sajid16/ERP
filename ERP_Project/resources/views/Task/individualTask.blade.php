@@ -14,67 +14,75 @@ InfobizSoft-ERP
 
 		<div class="main-body">
 			<div class="page-wrapper">
-				<div class="heading" style="height:25px; color: black; font-size: 35px; font-weight: bold;">
-					Task Management
-				</div>
-				<br><br>
-				<div class="form-group pull-left mt-2" style="width:450px; padding-bottom: 20px;"> 
-					<input type="text" class="search form-control" placeholder="What you looking for?">
-				</div>
+				<div class="card">
+					<div class="card-block">
+						<div class="heading" style="height:25px; color: black; font-size: 35px; font-weight: bold;">
+							Task Management
+						</div>
+						<br><br>
+						<div class="form-group pull-left mt-2" style="width:450px; padding-bottom: 20px;"> 
+							<input type="text" class="search form-control" placeholder="What you looking for?">
+						</div>
 
-				<div class="" id="" style="padding-top: 15px; padding-bottom: 15px; background-color: #202020; font-size: 18px; color:white;margin-top: 60px;">
-					<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px;margin-left:-434px;"></i> Individual Task Mangement Table
+						<div class="" id="" style="padding-top: 15px; padding-bottom: 15px; background-color: #202020; font-size: 18px; color:white;margin-top: 60px;">
+							<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px;margin-left:-434px;"></i> Individual Task Mangement Table
+						</div>
+						<div class="table-responsive">
+							<div class="dt-responsive table-responsive">
+								<table class="table table-hover table-bordered results">
+									<thead>
+										<tr>
+											<th>Serial No.</th>
+											<th>Employee Name</th>
+											<th>Employee Email</th>
+											<th>Employee Department</th>
+											<th>Employee ID</th>
+											<th>Description</th>
+											<th>Start Date</th>
+											<th>End Date</th>
+											<th>Status</th>
+											<th>Action</th>
+										</tr>
+										<tr class="warning no-result">
+											<td colspan="4"><i class="fa fa-warning"></i> No result</td>
+										</tr>
+									</thead>
+									<tbody>
+										<?php $i=0 ?>
+										@foreach($array['taskInfo'] as $taskinfo)
+										<tr>
+											<td>{{++$i}}</td>
+											<td>{{$taskinfo->emp_fname." ".$taskinfo->emp_lname}}</td>
+											<td>{{$taskinfo->emp_email}}</td>
+											<td>{{$taskinfo->dept_name}}</td>
+											<td>{{$taskinfo->emp_id}}</td>
+											<td>{{$taskinfo->emp_taskDescription}}</td>
+											<td>{{$taskinfo->emp_startDate}}</td>
+											<td>{{$taskinfo->emp_endDate}}</td>
+											@if($taskinfo->status == 1)
+											<td><span class="badge badge-primary" style="font-size: 13px;">On Progress</span></td>
+											<td style="text-align: center;">
+												<a href="{{url('/task_management/individual_task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Status</a>
+											</td>
+											@elseif($taskinfo->status == 2)
+											<td><span class="badge badge-success" style="font-size: 13px;">Completed</span></td>
+											<td>Review Completed</td>
+											@else
+											<td><span class="badge badge-warning" style="font-size: 13px;">Assigned</span></td>
+											<td style="text-align: center;">
+												<a href="{{url('/task_management/individual_task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Status</a>
+											</td>
+											@endif
+										</tr>
+										<input type="hidden" name="taskid" value="{{$taskinfo->id}}">		
+										@endforeach
+									</tbody>
+								</table>
+								{{$array['taskInfo']->links()}}
+							</div>
+						</div>
+					</div>
 				</div>
-				<table class="table table-hover table-bordered results">
-					<thead>
-						<tr>
-							<th>Serial No.</th>
-							<th>Employee Name</th>
-							<th>Employee Email</th>
-							<th>Employee Department</th>
-							<th>Employee ID</th>
-							<th>Description</th>
-							<th>Start Date</th>
-							<th>End Date</th>
-							<th>Status</th>
-							<th>Action</th>
-						</tr>
-						<tr class="warning no-result">
-							<td colspan="4"><i class="fa fa-warning"></i> No result</td>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $i=0 ?>
-						@foreach($array['taskInfo'] as $taskinfo)
-						<tr>
-							<td>{{++$i}}</td>
-							<td>{{$taskinfo->emp_fname." ".$taskinfo->emp_lname}}</td>
-							<td>{{$taskinfo->emp_email}}</td>
-							<td>{{$taskinfo->dept_name}}</td>
-							<td>{{$taskinfo->emp_id}}</td>
-							<td>{{$taskinfo->emp_taskDescription}}</td>
-							<td>{{$taskinfo->emp_startDate}}</td>
-							<td>{{$taskinfo->emp_endDate}}</td>
-							@if($taskinfo->status == 1)
-							<td><span class="badge badge-primary" style="font-size: 13px;">On Progress</span></td>
-							<td style="text-align: center;">
-								<a href="{{url('/task_management/individual_task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Status</a>
-							</td>
-							@elseif($taskinfo->status == 2)
-							<td><span class="badge badge-success" style="font-size: 13px;">Completed</span></td>
-							<td>Review Completed</td>
-							@else
-							<td><span class="badge badge-warning" style="font-size: 13px;">Assigned</span></td>
-							<td style="text-align: center;">
-								<a href="{{url('/task_management/individual_task_edit')}}/{{$taskinfo->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Change Status</a>
-							</td>
-							@endif
-						</tr>
-						<input type="hidden" name="taskid" value="{{$taskinfo->id}}">		
-						@endforeach
-					</tbody>
-				</table>
-				{{$array['taskInfo']->links()}}
 			</div>
 		</div>
 	</div>

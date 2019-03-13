@@ -11,13 +11,10 @@ InfobizSoft-ERP
 @section('dashboard_content')
 <div class="pcoded-content">
 	<div class="pcoded-inner-content">
-
 		<div class="main-body">
 			<div class="page-wrapper">
 				<div class="card">
 					<div class="card-block">
-						<div class="table-responsive">
-							<div class="dt-responsive table-responsive">
 								<div class="heading" style="height:25px; color: black; font-size: 35px; font-weight: bold;">
 									Leave Management
 								</div>
@@ -28,7 +25,9 @@ InfobizSoft-ERP
 
 								<div style="padding-top: 15px; padding-bottom: 15px; background-color: #202020; font-size: 18px; color:white;margin-top: 60px; width: 100%;">
 									<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px;margin-left:-434px;"></i> Team Leave Management Table
-								</div>
+								</div>	
+						<div class="table-responsive">
+							<div class="dt-responsive table-responsive">
 								<table class="table table-hover table-bordered results">
 									<thead>
 										<tr>
@@ -92,6 +91,8 @@ InfobizSoft-ERP
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 		</div>
 	</div>
