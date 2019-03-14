@@ -301,7 +301,7 @@ InfobizSoft-ERP
 </div>
 
 <div class="mr-4 pr-3">
-	<button type="submit" class="btn btn-success btn-square pull-right mr-5"> <i class="icofont icofont-check-circled">Add Employee</button>
+	<button type="submit" class="btn btn-success btn-square pull-right mr-5"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update Employee Info</button>
 	</div>
 
 	{!! Form::close() !!}
