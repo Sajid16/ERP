@@ -98,6 +98,12 @@ Route::post('/leave_management/leave_status_update','leaveController@reviewReque
 Route::get('/training_management/training_topics','trainingTopicsController@index')->name('trainingTopics');
 Route::post('/training_management/training_topics','trainingTopicsController@add_field');
 Route::get('/training_management/my_training','trainingController@index')->name('myTraining');
+Route::get('/training_management/team_training','trainingController@teamTraining')->name('teamTraining');
+Route::get('/training_management/training_request','trainingController@requestTraining')->name('requestTraining');
+Route::post('/training_management/training_request_save','trainingController@trainingRequestSave');
+Route::get('/training_management/all_training_request','trainingController@allrequestTraining')->name('alltrainingrequest');
+Route::get('/training_management/all_training_request_view/{id}','trainingController@allrequestTrainingView');
+Route::post('/training_management/all_training_request_check','trainingController@trainingRequestCheck');
 
 // -------------------------------------------------------------------------------------------------
 //  profile management settings url

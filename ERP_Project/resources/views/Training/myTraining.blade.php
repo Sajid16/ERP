@@ -9,69 +9,90 @@ InfobizSoft-ERP
 @endsection
 
 @section('dashboard_content')
+<div class="pcoded-content">
+	<div class="pcoded-inner-content">
+		<div class="main-body">
+			<div class="page-wrapper">
+				<div class="card">
+					<div class="card-block">
+								<div class="heading" style="height:25px; color: black; font-size: 35px; font-weight: bold;">
+									Training Management
+								</div>
+								<br><br>
+								<div class="form-group pull-left mt-2" style="width:450px; padding-bottom: 20px;"> 
+									<input type="text" class="search form-control" placeholder="What you looking for?">
+								</div>
 
-
-<section id="main-content">
-    <section class="wrapper site-min-height">
-        <!-- page start-->
-        <section class="panel">
-           
-            <div class="panel-body col-md-12">
-                <div class="adv-table editable-table ">
-                    <div class="clearfix">
-                        <div class="col-lg-12">
-                            <section class="panel">
-                                <div class="panel-body">
-
-					
-						
-						
-							<div class="adv-table editable-table" style="width: 90px;">
-                                         <div class="space15"></div>
-                                            <table class="table table-striped table-hover table-bordered" id="editable-sample">
-                                            	 <div class="col-lg-12">
+								<div style="padding-top: 15px; padding-bottom: 15px; background-color: #202020; font-size: 18px; color:white;margin-top: 60px; width: 100%;">
+									<i class="fa fa-cogs" style="padding-top: 8px; padding-bottom: 8px;margin-left:-434px;"></i> My Training List
+								</div>	
+						<div class="table-responsive">
+							<div class="dt-responsive table-responsive">
+								<table class="table table-hover table-bordered results">
 									<thead>
 										<tr>
-											<th width="5%">#</th>
-											<th width="5%">First</th>
-											<th width="5%">Last</th>
-											<th style="width: 100px !important;">Handle</th>
+											<th>Serial No.</th>
+											<th>Training</th>
+											<th>Employee Email</th>
+											<th>Session</th>
+											<th>From</th>
+											<th>To</th>
+											<th>Status</th>
+											<th>Action</th>
+										</tr>
+										<tr class="warning no-result">
+											<td colspan="4"><i class="fa fa-warning"></i> No result</td>
 										</tr>
 									</thead>
-								</div>
 									<tbody>
-										<tr>
-											<td scope="row">1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</td>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-										</tr>
+										<?php $i=0 ?>
+										
 									</tbody>
 								</table>
+								
 							</div>
-					
-
 						</div>
-                                </section>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </section>
+					</div>
+				</div>
 
 
+			</div>
+		</div>
+	</div>
+</div>
+
+@endsection
+
+@section('page_js')
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$(".search").keyup(function () {
+			var searchTerm = $(".search").val();
+			var listItem = $('.results tbody').children('tr');
+			var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+
+			$.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+				return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+			}
+		});
+
+			$(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+				$(this).attr('visible','false');
+			});
+
+			$(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+				$(this).attr('visible','true');
+			});
+
+			var jobCount = $('.results tbody tr[visible="true"]').length;
+			$('.counter').text(jobCount + ' item');
+
+			if(jobCount == '0') {$('.no-result').show();}
+			else {$('.no-result').hide();}
+		});
+	});
+
+</script>
 @endsection
