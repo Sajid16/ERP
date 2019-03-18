@@ -31,13 +31,20 @@ class trainingController extends Controller
 		->Where('menuses.action','=',1)
 		->Where('erp_previledges.user_email','=',$email)
 		->get();
+		$my_trainings = DB::table('trainings')
+								->join('training_topics', 'trainings.training_topics', '=', 'training_topics.id')
+								->select('trainings.*','training_topics.name')
+								->where('trainings.emp_email', '=', $email)
+								->get();
 
 		$dashboard_array = [];
+		$array = [];
 
 		$dashboard_array['main_menu'] = $main_menu;
 		$dashboard_array['sub_menu'] = $sub_menu;
 		$dashboard_array['sub_menu_list'] = $sub_menu_list;
-		return view ('Training.myTraining',compact('dashboard_array'));
+		$array['my_trainings'] = $my_trainings;
+		return view ('Training.myTraining',compact('dashboard_array','array'));
 
 	}
 
@@ -64,13 +71,20 @@ class trainingController extends Controller
 		->Where('menuses.action','=',1)
 		->Where('erp_previledges.user_email','=',$email)
 		->get();
+		$team_training_requests = DB::table('trainings')
+								->join('training_topics', 'trainings.training_topics', '=', 'training_topics.id')
+								->select('trainings.*','training_topics.name')
+								->where('trainings.proposer_email', '=', $email)
+								->get();
 
 		$dashboard_array = [];
+		$array = [];
 
 		$dashboard_array['main_menu'] = $main_menu;
 		$dashboard_array['sub_menu'] = $sub_menu;
 		$dashboard_array['sub_menu_list'] = $sub_menu_list;
-		return view ('Training.teamTraining',compact('dashboard_array'));
+		$array['team_training_requests'] = $team_training_requests;
+		return view ('Training.teamTraining',compact('dashboard_array','array'));
 	}
 
 	public function requestTraining(){
@@ -190,6 +204,7 @@ class trainingController extends Controller
 		$all_training_requests = DB::table('trainings')
 								->join('training_topics', 'trainings.training_topics', '=', 'training_topics.id')
 								->select('trainings.*','training_topics.name')
+								->where('trainings.id', '=', $id)
 								->get();
 
 		$dashboard_array = [];
@@ -208,6 +223,7 @@ class trainingController extends Controller
 
 		$training_request_check->from = $request->training_from;
 		$training_request_check->to = $request->training_to;
+		$training_request_check->duration = $request->duration;
 		$training_request_check->status = $request->training_status;
 
 		$training_request_check->save();

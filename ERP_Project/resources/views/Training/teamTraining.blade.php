@@ -25,7 +25,7 @@ InfobizSoft-ERP
 						</div>
 
 						<div class="add_employee" style="text-align: right; padding-bottom: 20px;">
-							<a href="{{Route('taskadd')}}" class="btn btn-primary" role="button" title="Add Employee"><i class="fa fa-plus" aria-hidden="true"></i>Request New Training</a>
+							<a href="{{Route('requestTraining')}}" class="btn btn-primary" role="button" title="Add Employee"><i class="fa fa-plus" aria-hidden="true"></i>Request New Training</a>
 						</div>
 
 						<span class="counter pull-right"></span>
@@ -39,12 +39,13 @@ InfobizSoft-ERP
 										<tr>
 											<th>Serial No.</th>
 											<th>Training</th>
-											<th>Session</th>
 											<th>Employee Email</th>
+											<th>Proposer Email</th>
+											<th>Session</th>
 											<th>From</th>
 											<th>To</th>
-											<th>Status</th>
 											<th>Ratings</th>
+											<th>Status</th>
 											<th>Action</th>
 										</tr>
 										<tr class="warning no-result">
@@ -53,7 +54,43 @@ InfobizSoft-ERP
 									</thead>
 									<tbody>
 										<?php $i=0 ?>
-										
+										@foreach($array['team_training_requests'] as $team_training_requests)
+										<tr>
+											<td>{{++$i}}</td>
+											<td>{{$team_training_requests->name}}</td>
+											<td>{{$team_training_requests->emp_email}}</td>
+											<td>{{$team_training_requests->proposer_email}}</td>
+											<td>{{$team_training_requests->duration}} days</td>
+											<td>{{$team_training_requests->from}}</td>
+											<td>{{$team_training_requests->to}}</td>
+											@if($team_training_requests->ratings == "")
+											<td>N/A</td>
+											@else
+											<td>{{$team_training_requests->ratings}}</td>
+											@endif
+											@if($team_training_requests->status == 1)
+											<td><span class="badge badge-success" style="font-size: 13px;">Accepted</span></td>
+											<td style="text-align: center;">
+												<a href="{{url('/training_management/all_training_request_view')}}/{{$team_training_requests->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></i>View</a>
+											</td>
+											<td>{{$team_training_requests->ratings}}</td>
+											<td>Review Completed</td>
+											@elseif($team_training_requests->status == 2)
+											<td><span class="badge badge-danger" style="font-size: 13px;">Refused</span></td>
+											<td>Not Available</td>
+											@elseif($team_training_requests->status == 3)
+											<td><span class="badge badge-secondary" style="font-size: 13px;">Proposed</span></td>
+											<td>Not Available</td>
+											@elseif($team_training_requests->status == 4)
+											<td><span class="badge badge-danger" style="font-size: 13px;">Declined</span></td>
+											<td>Not Available</td>
+											@else
+											<td><span class="badge badge-warning" style="font-size: 13px;">Initiated</span></td>
+											<td>Not Available</td>
+											@endif
+										</tr>
+										<input type="hidden" name="taskid" value="{{$team_training_requests->id}}">		
+										@endforeach
 									</tbody>
 								</table>
 							</div>

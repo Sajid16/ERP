@@ -38,9 +38,10 @@ InfobizSoft-ERP
 											<th>Session</th>
 											<th>From</th>
 											<th>To</th>
-											<th>Status</th>
 											<th>Ratings</th>
+											<th>Status</th>
 											<th>Action</th>
+										</tr>
 											<tr class="warning no-result">
 												<td colspan="4"><i class="fa fa-warning"></i> No result</td>
 											</tr>
@@ -53,25 +54,28 @@ InfobizSoft-ERP
 												<td>{{$all_training_requests->name}}</td>
 												<td>{{$all_training_requests->emp_email}}</td>
 												<td>{{$all_training_requests->proposer_email}}</td>
-												<td>{{$all_training_requests->duration}}</td>
+												<td>{{$all_training_requests->duration}} days</td>
 												<td>{{$all_training_requests->from}}</td>
 												<td>{{$all_training_requests->to}}</td>
+												@if($all_training_requests->ratings == "")
+												<td>N/A</td>
+												@else
+												<td>{{$all_training_requests->ratings}}</td>
+												@endif
 												@if($all_training_requests->status == 1)
 												<td><span class="badge badge-success" style="font-size: 13px;">Accepted</span></td>
-												<td>{{$all_training_requests->ratings}}</td>
 												<td>Review Completed</td>
 												@elseif($all_training_requests->status == 2)
 												<td><span class="badge badge-danger" style="font-size: 13px;">Refused</span></td>
-												<td>N/A</td>
 												<td>Review Completed</td>
 												@elseif($all_training_requests->status == 3)
 												<td><span class="badge badge-secondary" style="font-size: 13px;">Proposed</span></td>
+												<td>Review Completed</td>
 												@elseif($all_training_requests->status == 4)
 												<td><span class="badge badge-danger" style="font-size: 13px;">Declined</span></td>
-												<td>N/A</td>
+												<td>Review Completed</td>
 												@else
 												<td><span class="badge badge-warning" style="font-size: 13px;">Initiated</span></td>
-												<td>{{$all_training_requests->ratings}}</td>
 												<td style="text-align: center;">
 													<a href="{{url('/training_management/all_training_request_view')}}/{{$all_training_requests->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></i>View</a>
 												</td>
