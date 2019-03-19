@@ -38,7 +38,7 @@ InfobizSoft-ERP
 											<th>Session</th>
 											<th>From</th>
 											<th>To</th>
-											<th>Ratings</th>
+											<th>Feedback</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -57,22 +57,21 @@ InfobizSoft-ERP
 											<td>{{$my_trainings->duration}} days</td>
 											<td>{{$my_trainings->from}}</td>
 											<td>{{$my_trainings->to}}</td>
-											@if($my_trainings->ratings == "")
+											@if($my_trainings->Feedback == "")
 											<td>N/A</td>
 											@else
-											<td>{{$my_trainings->ratings}}</td>
+											<td>{{$my_trainings->Feedback}}</td>
 											@endif
 											@if($my_trainings->status == 1)
 											<td><span class="badge badge-success" style="font-size: 13px;">Accepted</span></td>
-											<td>{{$my_trainings->ratings}}</td>
-											<td>N/A</td>
+											<td>Review Completed</td>
 											@elseif($my_trainings->status == 2)
 											<td><span class="badge badge-danger" style="font-size: 13px;">Refused</span></td>
 											<td>N/A</td>
 											@elseif($my_trainings->status == 3)
 											<td><span class="badge badge-secondary" style="font-size: 13px;">Proposed</span></td>
 											<td style="text-align: center;">
-												<a href="{{url('/training_management/all_training_request_view')}}/{{$my_trainings->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></i>View</a>
+												<a href="{{url('/training_management/employee_training_request_view')}}/{{$my_trainings->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></i>View</a>
 											</td>
 											@elseif($my_trainings->status == 4)
 											<td><span class="badge badge-danger" style="font-size: 13px;">Declined</span></td>

@@ -104,6 +104,9 @@ Route::post('/training_management/training_request_save','trainingController@tra
 Route::get('/training_management/all_training_request','trainingController@allrequestTraining')->name('alltrainingrequest');
 Route::get('/training_management/all_training_request_view/{id}','trainingController@allrequestTrainingView');
 Route::post('/training_management/all_training_request_check','trainingController@trainingRequestCheck');
+Route::get('/training_management/employee_training_request_view/{id}','trainingController@employeetrainingView');
+Route::post('/training_management/employee_training_request_confirmation','trainingController@employeetrainingConfirmation');
+Route::post('/training_management/save_feedback','trainingController@saveFeedback');
 
 // -------------------------------------------------------------------------------------------------
 //  profile management settings url

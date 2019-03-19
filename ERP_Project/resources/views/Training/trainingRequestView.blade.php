@@ -68,7 +68,7 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Description</label>
 										<div class="col-sm-8">
-											<textarea type="text" class="form-control" name="trainingDescription" readonly="true" required>{{$all_training_requests->description}}</textarea>
+											<textarea type="text" class="form-control" rows="5" name="trainingDescription" readonly="true" required>{{$all_training_requests->description}}</textarea>
 										</div>
 									</div>
 									<div class="form-group row">
@@ -93,7 +93,7 @@ InfobizSoft-ERP
 										<div class="col-sm-8">
 											<select name="training_status" class="form-control" required="true">
 												<option value="3">Proposed</option>
-												<option value="2">Declined</option>
+												<option value="2">Refused</option>
 											</select>
 										</div>
 									</div>
@@ -105,7 +105,7 @@ InfobizSoft-ERP
 					</div>
 				</div>
 				<div style="padding-left: 15.5%;">
-					<button type="submit" class="btn btn-success btn-square" style="width: 61%;"><i class="fa fa-check-square-o" aria-hidden="true"></i>Accept Training</button>
+					<button type="submit" class="btn btn-success btn-square" style="width: 61%;"><i class="fa fa-check-square-o" aria-hidden="true"></i>Arrange Training</button>
 				</div>
 				{!! Form::close() !!}
 			</div>

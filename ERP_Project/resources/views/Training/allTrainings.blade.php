@@ -38,7 +38,7 @@ InfobizSoft-ERP
 											<th>Session</th>
 											<th>From</th>
 											<th>To</th>
-											<th>Ratings</th>
+											<th>Feedback</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -57,10 +57,10 @@ InfobizSoft-ERP
 												<td>{{$all_training_requests->duration}} days</td>
 												<td>{{$all_training_requests->from}}</td>
 												<td>{{$all_training_requests->to}}</td>
-												@if($all_training_requests->ratings == "")
+												@if($all_training_requests->Feedback == "")
 												<td>N/A</td>
 												@else
-												<td>{{$all_training_requests->ratings}}</td>
+												<td>{{$all_training_requests->Feedback}}</td>
 												@endif
 												@if($all_training_requests->status == 1)
 												<td><span class="badge badge-success" style="font-size: 13px;">Accepted</span></td>

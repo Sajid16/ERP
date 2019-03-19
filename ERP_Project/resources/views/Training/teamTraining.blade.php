@@ -44,7 +44,7 @@ InfobizSoft-ERP
 											<th>Session</th>
 											<th>From</th>
 											<th>To</th>
-											<th>Ratings</th>
+											<th>Feedback</th>
 											<th>Status</th>
 											<th>Action</th>
 										</tr>
@@ -63,18 +63,17 @@ InfobizSoft-ERP
 											<td>{{$team_training_requests->duration}} days</td>
 											<td>{{$team_training_requests->from}}</td>
 											<td>{{$team_training_requests->to}}</td>
-											@if($team_training_requests->ratings == "")
+											@if($team_training_requests->Feedback == "")
 											<td>N/A</td>
 											@else
-											<td>{{$team_training_requests->ratings}}</td>
+											<td>{{$team_training_requests->Feedback}}</td>
 											@endif
-											@if($team_training_requests->status == 1)
+											@if($team_training_requests->status == 1 && $team_training_requests->Feedback == "")
 											<td><span class="badge badge-success" style="font-size: 13px;">Accepted</span></td>
 											<td style="text-align: center;">
 												<a href="{{url('/training_management/all_training_request_view')}}/{{$team_training_requests->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></i>View</a>
+												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#save_feedback" data-whatever="@mdo"><i class="fa fa-comments" aria-hidden="true"></i>Feedback</button>
 											</td>
-											<td>{{$team_training_requests->ratings}}</td>
-											<td>Review Completed</td>
 											@elseif($team_training_requests->status == 2)
 											<td><span class="badge badge-danger" style="font-size: 13px;">Refused</span></td>
 											<td>Not Available</td>
@@ -88,8 +87,37 @@ InfobizSoft-ERP
 											<td><span class="badge badge-warning" style="font-size: 13px;">Initiated</span></td>
 											<td>Not Available</td>
 											@endif
-										</tr>
-										<input type="hidden" name="taskid" value="{{$team_training_requests->id}}">		
+										</tr>	
+
+										<!-- modal part -->
+
+										<div class="modal fade" id="save_feedback" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													{!! Form::open(['url'=>'/training_management/save_feedback','method'=>'post', 'enctype'=>'multipart/form-data']) !!}
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Feedback</h5>
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+
+														<input type="text" name="training_id" value="{{$team_training_requests->id}}">
+														<div class="form-group">
+															<label for="message-text" class="col-form-label">Place Feedback:</label>
+															<textarea class="form-control" id="message-text" rows="5" name="feedback"></textarea>
+														</div>
+
+													</div>
+													<div class="modal-footer">
+														<button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i>Save</button>
+													</div>
+													{!! Form::close() !!}
+												</div>
+											</div>
+										</div>
+
 										@endforeach
 									</tbody>
 								</table>

@@ -72,7 +72,7 @@ InfobizSoft-ERP
 									<div class="form-group row">
 										<label class="col-sm-4 col-form-label">Description</label>
 										<div class="col-sm-8">
-											<textarea type="text" class="form-control" placeholder="Enter training description" name="trainingDescription" required></textarea>
+											<textarea type="text" class="form-control" rows="5" placeholder="Enter training description" name="trainingDescription" required></textarea>
 										</div>
 									</div>																
 								</div>
