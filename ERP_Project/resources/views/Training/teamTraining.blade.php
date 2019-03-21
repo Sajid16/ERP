@@ -74,6 +74,11 @@ InfobizSoft-ERP
 												<a href="{{url('/training_management/all_training_request_view')}}/{{$team_training_requests->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></i>View</a>
 												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#save_feedback" data-whatever="@mdo"><i class="fa fa-comments" aria-hidden="true"></i>Feedback</button>
 											</td>
+											@elseif($team_training_requests->status == 1 && $team_training_requests->Feedback != "")
+											<td><span class="badge badge-success" style="font-size: 13px;">Accepted</span></td>
+											<td style="text-align: center;">
+												<a href="{{url('/training_management/all_training_request_view')}}/{{$team_training_requests->id}}" class="btn btn-info" role="button" title="Edit"><i class="fa fa-eye" aria-hidden="true"></i></i>View</a>
+											</td>
 											@elseif($team_training_requests->status == 2)
 											<td><span class="badge badge-danger" style="font-size: 13px;">Refused</span></td>
 											<td>Not Available</td>
