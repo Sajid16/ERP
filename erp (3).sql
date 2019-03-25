@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2019 at 07:45 AM
+-- Generation Time: Mar 24, 2019 at 07:48 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -402,7 +402,7 @@ CREATE TABLE `trainings` (
   `to` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `duration` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
-  `ratings` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Feedback` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -411,9 +411,8 @@ CREATE TABLE `trainings` (
 -- Dumping data for table `trainings`
 --
 
-INSERT INTO `trainings` (`id`, `training_topics`, `emp_email`, `proposer_email`, `description`, `comments`, `from`, `to`, `duration`, `status`, `ratings`, `created_at`, `updated_at`) VALUES
-(1, '1', 'sajid.mahboob16@gmail.com', 'sajid@infobizsoft.com', 'need improvement', NULL, '03/19/2019', '03/21/2019', '3', 2, NULL, '2019-03-14 02:47:13', '2019-03-18 04:16:01'),
-(2, '4', 'sajid.mahboob16@gmail.com', 'sajid@infobizsoft.com', 'another training needed', 'I have taken leave among these days', '03/20/2019', '03/24/2019', '5', 4, NULL, '2019-03-14 05:47:48', '2019-03-19 00:32:35'),
+INSERT INTO `trainings` (`id`, `training_topics`, `emp_email`, `proposer_email`, `description`, `comments`, `from`, `to`, `duration`, `status`, `Feedback`, `created_at`, `updated_at`) VALUES
+(2, '4', 'sajid.mahboob16@gmail.com', 'sajid@infobizsoft.com', 'another training needed', 'I have taken leave among these days', '03/20/2019', '03/24/2019', '5', 1, 'hello there', '2019-03-14 05:47:48', '2019-03-20 23:39:45'),
 (3, '3', 'sajid.mahboob16@gmail.com', 'sajid@infobizsoft.com', '3rd training', NULL, '03/19/2019', '03/20/2019', NULL, 1, NULL, '2019-03-18 03:50:04', '2019-03-19 00:23:06');
 
 -- --------------------------------------------------------
@@ -461,8 +460,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Sajid', 'sajid.mahboob16@gmail.com', NULL, '$2y$10$9DANC8ZGzGfMAzguDmIMxe/eOpzQnPWHrXoTkey5f6ThQZ8rtxXGy', 'hpHbRHvy7YH6n0s1rhS9fkdGnrMcbhU1LqVneESpT2VrXTK3L8TqJHWsQszy', '2019-01-22 22:54:13', '2019-01-22 22:54:13'),
-(2, 'upal', 'sajid@infobizsoft.com', NULL, '$2y$10$9VEYhVgrCPWIMHVbWWrC8uAqXWWD77JM2EeZW0Qk2OlEGoAfIyLzG', 'LVQvoj60kNNaack3Hma6aLXNnKWQjubSfmeeaGia93NAi4nfFYujKYoh1XDM', '2019-01-23 03:30:00', '2019-01-23 03:30:00'),
+(1, 'Sajid', 'sajid.mahboob16@gmail.com', NULL, '$2y$10$9DANC8ZGzGfMAzguDmIMxe/eOpzQnPWHrXoTkey5f6ThQZ8rtxXGy', 'HPDJ2j5Zxt1XqbyQELKNQaoTqDyZMvonyvfPKoZRDuBoPujAcX4jWFoBU6PL', '2019-01-22 22:54:13', '2019-01-22 22:54:13'),
+(2, 'upal', 'sajid@infobizsoft.com', NULL, '$2y$10$9VEYhVgrCPWIMHVbWWrC8uAqXWWD77JM2EeZW0Qk2OlEGoAfIyLzG', 'mrmQUA0i4GjkpWB9ZcQDx3E1uf5Yd19qoiny2qPXC8iW6mwNsS6PbBH1fLwj', '2019-01-23 03:30:00', '2019-01-23 03:30:00'),
 (3, 'Raisul Islam', 'raisul@infobiz.com', NULL, '$2y$10$NCkvkNgHpe5mGvQfFbB.1Old3h1T2gWZaYhXwYleJwXROM/cZWOAi', 'YsYO1qNNmKwmJHzDzIBwgGpv3BDCceedwaI0MPQYGj8qmNUZVavx81jiFq4l', '2019-02-24 05:11:12', '2019-02-24 05:11:12');
 
 --
